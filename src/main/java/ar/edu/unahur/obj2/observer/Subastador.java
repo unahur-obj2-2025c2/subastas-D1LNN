@@ -3,13 +3,30 @@ package ar.edu.unahur.obj2.observer;
 public class Subastador implements Observador {
     private String nombre;
     private Oferta ultimaOferta;
+    private EstrategiaDeOferta estrategia;
 
     public Subastador(String nombre) {
         this.nombre = nombre;
+        this.ultimaOferta = null;
+        this.estrategia = new EstrategiaArriesgado();
+    }
+
+    public Subastador(String nombre, EstrategiaDeOferta estrategia) {
+        this.nombre = nombre;
+        this.ultimaOferta = null;
+        this.estrategia = estrategia;
     }
 
     public Oferta getUltimaOferta() {
         return this.ultimaOferta;
+    }
+
+    public EstrategiaDeOferta getEstrategia() {
+        return this.estrategia;
+    }
+
+    public void setEstrategia(EstrategiaDeOferta estrategia) {
+        this.estrategia = estrategia;
     }
 
     @Override
@@ -26,9 +43,7 @@ public class Subastador implements Observador {
         }
 
     public void realizarOferta(ProductoSubastado producto) {
-        Double valor = (this.ultimaOferta == null) ? 10.0 : this.ultimaOferta.getValor() + 10.0;
-        Oferta nuevaOferta = new Oferta(this, valor); 
-        producto.agregarOferta(nuevaOferta);
+        this.estrategia.crearOferta(this, producto);
     }
 
 }

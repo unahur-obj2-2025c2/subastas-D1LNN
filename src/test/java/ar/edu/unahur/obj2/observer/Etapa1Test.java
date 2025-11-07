@@ -48,7 +48,7 @@ public class Etapa1Test {
     }
 
     @Test
-    void elSub3AlAgregarOfertaLanzaExcepcion() {
+    void elSub2AlAgregarOfertaLanzaExcepcion() {
         assertThrows(NoParticipaException.class, () -> {
             subastador2.realizarOferta(producto);
         });
