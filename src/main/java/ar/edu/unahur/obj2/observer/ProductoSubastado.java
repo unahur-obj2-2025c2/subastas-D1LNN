@@ -29,7 +29,23 @@ public class ProductoSubastado {
     
     }
 
-    private void notificarOferta(Oferta nuevaOferta) {
-        this.subastadores.stream().forEach(subastador -> subastador.actualizar(nuevaOferta));}
+    public void notificarOferta(Oferta nuevaOferta) {
+        this.subastadores.stream().forEach(subastador -> subastador.actualizar(nuevaOferta));
+    }
+
+    public Oferta obtenerUltimaOferta() {
+        if (!this.ofertas.isEmpty()) {
+            return this.ofertas.get(this.ofertas.size() - 1);
+        }
+        return null;
+    }
+
+    public List<Oferta> getOfertas() {
+        return this.ofertas;
+    }
+
+    public Set<Subastador> getSubastadores() {
+        return this.subastadores;
+    }
 
 }

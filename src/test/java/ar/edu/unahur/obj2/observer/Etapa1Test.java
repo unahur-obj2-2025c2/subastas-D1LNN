@@ -1,4 +1,5 @@
 package ar.edu.unahur.obj2.observer;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -36,6 +37,21 @@ public class Etapa1Test {
         assertTrue(subastador3.getUltimaOferta().getValor() == 30.0);
     }
 
+    @Test
+    void ultimaOfertaPerteneceASub3() {
+        assertTrue(producto.obtenerUltimaOferta().getSubastador() == subastador3);
+    }
 
+    @Test
+    void laCantidadDeOfertasEs3() {
+        assertTrue(producto.getOfertas().size() == 3);
+    }
+
+    @Test
+    void elSub3AlAgregarOfertaLanzaExcepcion() {
+        assertThrows(NoParticipaException.class, () -> {
+            subastador2.realizarOferta(producto);
+        });
+    }
 
 }
