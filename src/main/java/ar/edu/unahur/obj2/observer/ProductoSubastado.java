@@ -20,18 +20,16 @@ public class ProductoSubastado {
 
     public void agregarOferta(Oferta nuevaOferta) {
         if (! this.subastadores.contains(nuevaOferta.getSubastador())) {
-            return noParticipaExeption();
+            throw new NoParticipaException();
         }
-
-        this.ofertas.add(nuevaOferta);
-
-        this.notificarOferta(nuevaOferta);
+        else {
+            this.ofertas.add(nuevaOferta);
+            this.notificarOferta(nuevaOferta);
+        }
     
     }
 
     private void notificarOferta(Oferta nuevaOferta) {
-        this.subastadores.stream()
-            .filter(subastador -> subastador != nuevaOferta.getSubastador())
-            .forEach(subastador -> subastador.setUltimaOferta(nuevaOferta));}
+        this.subastadores.stream().forEach(subastador -> subastador.actualizar(nuevaOferta));}
 
 }

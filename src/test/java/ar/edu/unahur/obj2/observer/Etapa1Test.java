@@ -1,4 +1,6 @@
 package ar.edu.unahur.obj2.observer;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +31,10 @@ public class Etapa1Test {
 
     @Test
 
-    void 
+    void sub1Ysub3RecibenLaUltimaOferta() {
+        assertTrue(subastador1.getUltimaOferta().getValor() == 30.0);
+        assertTrue(subastador3.getUltimaOferta().getValor() == 30.0);
+    }
 
 
 

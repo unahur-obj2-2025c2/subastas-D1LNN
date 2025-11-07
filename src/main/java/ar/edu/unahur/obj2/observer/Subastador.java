@@ -1,6 +1,6 @@
 package ar.edu.unahur.obj2.observer;
 
-public class Subastador {
+public class Subastador implements Observador {
     private String nombre;
     private Oferta ultimaOferta;
 
@@ -12,7 +12,8 @@ public class Subastador {
         return this.ultimaOferta;
     }
 
-    public void setUltimaOferta(Oferta oferta) {
+    @Override
+    public void actualizar(Oferta oferta) {
         this.ultimaOferta = oferta;
     }
 
